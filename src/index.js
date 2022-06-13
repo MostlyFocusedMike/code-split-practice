@@ -1,12 +1,8 @@
-document.getElementById('button').addEventListener('click', (e) => {
-  console.log('Hi?:', );
-  import('lodash')
-    .then(({ default: _ }) => {
-      const element = document.createElement('div');
+const main = async () => {
+  document.getElementById('button').addEventListener('click', async (e) => {
+    const { handleSubmit } = await import('./submit' /* webpackChunkName: "submit" */) // webpack magic comments allow us to name dynamic imports
+    handleSubmit();
+  })
+}
 
-      element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-      document.body.appendChild(element);
-    })
-    .catch((error) => 'An error occurred while loading the component');
-})
+main();
